@@ -21,3 +21,8 @@ export interface QuestionChipListProps {
   onChipClick: (text: string) => void;
   activeChip: string | null;
 }
+
+/** InputContainer Props */
+export interface InputContainerProps {
+  onSend: (test: string) => void;
+}

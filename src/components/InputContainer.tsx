@@ -7,10 +7,7 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 
 import SendIcon from "/public/icon/send.svg";
-
-interface InputContainerProps {
-  onSend: (test: string) => void;
-}
+import { InputContainerProps } from "@/types/components/types";
 
 const InputContainer = ({ onSend }: InputContainerProps) => {
   const [inputValue, setInputValue] = useState("");
