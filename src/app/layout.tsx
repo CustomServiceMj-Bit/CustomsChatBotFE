@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-import { Providers } from "./providers";
-
 import localFont from "next/font/local";
 
 const pretendard = localFont({
@@ -24,11 +22,9 @@ export default function RootLayout({
   return (
     <html lang="ko" className={pretendard.className}>
       <body className="bg-gray-200">
-        <Providers>
-          <div className="relative mx-auto flex h-screen max-w-[430px] min-w-[375px] flex-col justify-between bg-gray-100 shadow">
-            <main>{children}</main>
-          </div>
-        </Providers>
+        <div className="relative mx-auto flex h-screen max-w-[430px] min-w-[375px] flex-col justify-between bg-gray-100 shadow">
+          <main>{children}</main>
+        </div>
       </body>
     </html>
   );
