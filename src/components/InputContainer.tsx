@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import Icon from "./Icon";
 import QuestionChipList from "./QuestionChipList";
 import { Button } from "./ui/button";
@@ -8,16 +8,11 @@ import { Input } from "./ui/input";
 
 import SendIcon from "/public/icon/send.svg";
 import { InputContainerProps } from "@/types/components/types";
+import { QUICK_QUESTION_CHIPS } from "@/constants/components/constants";
 
 const InputContainer = ({ onSend }: InputContainerProps) => {
   const [inputValue, setInputValue] = useState("");
   const [activeChip, setActiveChip] = useState<string | null>(null);
-
-  const mockChipArr = [
-    "관세를 예측해줘",
-    "통관 진행을 조회해줘",
-    "위험 품목인지 알려줘",
-  ];
 
   const handleSubmit = () => {
     const trimmedValue = inputValue.trim();
@@ -26,16 +21,19 @@ const InputContainer = ({ onSend }: InputContainerProps) => {
     setInputValue("");
   };
 
-  const handleChipClick = (text: string) => {
-    onSend(text);
-    setActiveChip(text);
-  };
+  const handleChipClick = useCallback(
+    (text: string) => {
+      onSend(text);
+      setActiveChip(text);
+    },
+    [onSend],
+  );
 
   return (
     <div className="flex h-40 flex-col gap-4 bg-white p-4">
       <p className="text-xs text-gray-500">버튼으로 빠르게 질문해보세요!</p>
       <QuestionChipList
-        list={mockChipArr}
+        list={QUICK_QUESTION_CHIPS}
         onChipClick={handleChipClick}
         activeChip={activeChip}
       />

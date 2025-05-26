@@ -1,5 +1,6 @@
 import { QuestionChipListProps } from "@/types/components/types";
 import Chip from "./Chip";
+import React from "react";
 
 const QuestionChipList = ({
   list,
@@ -26,4 +27,4 @@ const QuestionChipList = ({
   );
 };
 
-export default QuestionChipList;
+export default React.memo(QuestionChipList);
