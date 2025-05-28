@@ -34,12 +34,6 @@ export default function Home() {
         return;
       }
     }
-
-    /* fallback
-    setMessages((prev) => [
-      ...prev,
-      { role: "bot", message: "죄송해요, 해당 요청은 이해하지 못했어요." },
-    ]);*/
   };
 
   return (
