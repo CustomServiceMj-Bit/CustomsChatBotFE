@@ -24,6 +24,8 @@ const InputContainer = () => {
 
   const onSend = async (text: string) => {
     addMessages([{ role: "user", message: text }]);
+
+    /** 추후 api 나오면 수정 필요 */
     const handlers = [handleTrackingCustomerClearance];
 
     for (const handler of handlers) {
