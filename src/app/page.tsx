@@ -3,13 +3,14 @@
 import ChatContainer from "@/components/chat/ChatContainer";
 import Header from "@/components/Header";
 import InputContainer from "@/components/InputContainer";
+import { INIT_BOT_MESSAGE } from "@/constants/texts";
 import { handleTrackingCustomerClearance } from "@/lib/chat/handlers/handleTrackingCustomerClearance";
 import { ChatMessage } from "@/types/components/chat/types";
 import { useState } from "react";
 
 export default function Home() {
   const [messages, setMessages] = useState<ChatMessage[]>([
-    { role: "bot", message: "안녕하세요! 무엇을 도와드릴까요?" },
+    { role: "bot", message: INIT_BOT_MESSAGE },
   ]);
   const [isWaitingForCargoNumber, setIsWaitingForCargoNumber] = useState(false);
 

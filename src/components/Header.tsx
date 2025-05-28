@@ -1,3 +1,4 @@
+import { REFRESH_BUTTON } from "@/constants/texts";
 import Icon from "./Icon";
 import { Button } from "./ui/button";
 import GovernmentIcon from "/public/img/gov_icon.svg";
@@ -10,7 +11,7 @@ const Header = () => {
         국민비서 민서
       </h1>
       <Button className="bg-navy-950" onClick={() => window.location.reload()}>
-        새로고침
+        {REFRESH_BUTTON}
       </Button>
     </div>
   );
