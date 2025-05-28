@@ -3,14 +3,6 @@ export interface ChatMessage {
   message: string;
 }
 
-export interface ChatContainerProps {
-  messages: ChatMessage[];
-}
-
-export interface ChatLogProps {
-  messages: ChatMessage[];
-}
-
 export interface CargoStatus {
   datetime: string;
   status: string;

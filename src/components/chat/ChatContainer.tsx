@@ -1,10 +1,9 @@
 import ChatLog from "./ChatLog";
-import { ChatContainerProps } from "@/types/components/chat/types";
 
-const ChatContainer = ({ messages }: ChatContainerProps) => {
+const ChatContainer = () => {
   return (
     <div>
-      <ChatLog messages={messages} />
+      <ChatLog />
     </div>
   );
 };

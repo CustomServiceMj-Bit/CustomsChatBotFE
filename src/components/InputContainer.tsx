@@ -7,22 +7,40 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 
 import SendIcon from "/public/icon/send.svg";
-import { InputContainerProps } from "@/types/components/types";
 import {
   INPUT_PLACEHOLDER,
   QUICK_QUESTION_CHIPS,
   QUICK_QUESTION_TEXT,
 } from "@/constants/texts";
+import { useChatMessageStore } from "@/store/useStore";
+import { handleTrackingCustomerClearance } from "@/lib/chat/handlers/handleTrackingCustomerClearance";
 
-const InputContainer = ({ onSend }: InputContainerProps) => {
+const InputContainer = () => {
   const [inputValue, setInputValue] = useState("");
   const [activeChip, setActiveChip] = useState<string | null>(null);
 
-  const handleSubmit = () => {
-    const trimmedValue = inputValue.trim();
-    if (!trimmedValue) return;
-    onSend(trimmedValue);
-    setInputValue("");
+  const addMessages = useChatMessageStore((state) => state.addMessages);
+  const [isWaitingForCargoNumber, setIsWaitingForCargoNumber] = useState(false);
+
+  const onSend = async (text: string) => {
+    addMessages([{ role: "user", message: text }]);
+    const handlers = [handleTrackingCustomerClearance];
+
+    for (const handler of handlers) {
+      const {
+        handled,
+        messages: botMessages,
+        continueWaiting,
+      } = await handler(text, isWaitingForCargoNumber);
+
+      if (handled) {
+        if (botMessages.length > 0) {
+          addMessages(botMessages);
+        }
+        setIsWaitingForCargoNumber(continueWaiting);
+        return;
+      }
+    }
   };
 
   const handleChipClick = useCallback(
@@ -32,6 +50,13 @@ const InputContainer = ({ onSend }: InputContainerProps) => {
     },
     [onSend],
   );
+
+  const handleSubmit = () => {
+    const trimmedValue = inputValue.trim();
+    if (!trimmedValue) return;
+    onSend(trimmedValue);
+    setInputValue("");
+  };
 
   return (
     <div className="flex h-40 flex-col gap-4 bg-white p-4">

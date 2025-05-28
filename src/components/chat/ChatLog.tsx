@@ -1,7 +1,9 @@
-import { ChatLogProps } from "@/types/components/chat/types";
 import CustomerClearanceTimeline from "./CustomerClearanceTimeline";
+import { useChatMessageStore } from "@/store/useStore";
 
-const ChatLog = ({ messages }: ChatLogProps) => {
+const ChatLog = () => {
+  const messages = useChatMessageStore((state) => state.messages);
+
   return (
     <div className="flex flex-col gap-3">
       {messages.map((chat, idx) => {
