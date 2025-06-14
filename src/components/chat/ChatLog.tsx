@@ -1,5 +1,7 @@
+import Image from "next/image";
 import CustomerClearanceTimeline from "./CustomerClearanceTimeline";
 import { useChatMessageStore } from "@/store/useStore";
+import BotIcon from "/public/img/bot.svg";
 
 const ChatLog = () => {
   const messages = useChatMessageStore((state) => state.messages);
@@ -30,10 +32,8 @@ const ChatLog = () => {
             }`}
           >
             {chat.role === "bot" && (
-              <div className="mr-2">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full text-3xl">
-                  🤖
-                </div>
+              <div className="mr-2 h-10 w-10 overflow-hidden">
+                <Image src={BotIcon} alt="bot-icon" />
               </div>
             )}
 

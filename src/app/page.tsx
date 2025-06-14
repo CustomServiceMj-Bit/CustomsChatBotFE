@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <div className="flex h-screen flex-col">
       <Header />
-      <div className="flex-grow overflow-y-auto p-6">
+      <div className="flex-grow overflow-y-auto p-6 pl-3">
         <ChatContainer />
       </div>
       <InputContainer />
