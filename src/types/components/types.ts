@@ -12,12 +12,10 @@ export interface IconProps {
 /** Chip 컴포넌트 Props */
 export interface ChipProps {
   text: string;
-  isActive: boolean;
   onClick: () => void;
 }
 
 export interface QuestionChipListProps {
   list: string[];
   onChipClick: (text: string) => void;
-  activeChip: string | null;
 }
