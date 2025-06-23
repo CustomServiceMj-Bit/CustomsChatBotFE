@@ -1,6 +1,7 @@
 export interface ChatMessage {
   role: "user" | "bot";
   message: string;
+  id?: string;
 }
 
 export interface CargoStatus {

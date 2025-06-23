@@ -10,3 +10,5 @@ export const QUICK_QUESTION_CHIPS = [
 export const REFRESH_BUTTON = "새로고침";
 
 export const INPUT_PLACEHOLDER = "질문을 입력하세요";
+
+export const BOT_TYPING = "입력중입니다";

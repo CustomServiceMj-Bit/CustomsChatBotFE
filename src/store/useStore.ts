@@ -8,6 +8,7 @@ interface ChatMessageStore {
   messages: ChatMessage[];
   addMessage: (message: ChatMessage) => void;
   addMessages: (messsages: ChatMessage[]) => void;
+  removeTyping: () => void;
 }
 
 export const useChatMessageStore = create<ChatMessageStore>((set) => ({
@@ -19,5 +20,9 @@ export const useChatMessageStore = create<ChatMessageStore>((set) => ({
   addMessages: (messages) =>
     set((state) => ({
       messages: [...state.messages, ...messages],
+    })),
+  removeTyping: () =>
+    set((state) => ({
+      messages: state.messages.filter((message) => message.id !== "typing"),
     })),
 }));
