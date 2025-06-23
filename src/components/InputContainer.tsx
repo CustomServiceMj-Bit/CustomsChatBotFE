@@ -7,36 +7,14 @@ import { Input } from "./ui/input";
 
 import SendIcon from "/public/icon/send.svg";
 import { INPUT_PLACEHOLDER } from "@/constants/texts";
-import { useChatMessageStore } from "@/store/useStore";
-import { handleTrackingCustomerClearance } from "@/lib/chat/handlers/handleTrackingCustomerClearance";
+import { useChatBotSender } from "@/hooks/useChatBotSender";
 
 const InputContainer = () => {
   const [inputValue, setInputValue] = useState("");
 
-  const addMessages = useChatMessageStore((state) => state.addMessages);
-  const [isWaitingForCargoNumber, setIsWaitingForCargoNumber] = useState(false);
-
+  const { sendMessage } = useChatBotSender();
   const onSend = async (text: string) => {
-    addMessages([{ role: "user", message: text }]);
-
-    /** 추후 api 나오면 수정 필요 */
-    const handlers = [handleTrackingCustomerClearance];
-
-    for (const handler of handlers) {
-      const {
-        handled,
-        messages: botMessages,
-        continueWaiting,
-      } = await handler(text, isWaitingForCargoNumber);
-
-      if (handled) {
-        if (botMessages.length > 0) {
-          addMessages(botMessages);
-        }
-        setIsWaitingForCargoNumber(continueWaiting);
-        return;
-      }
-    }
+    await sendMessage(text);
   };
 
   const handleSubmit = () => {

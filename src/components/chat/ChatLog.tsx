@@ -3,36 +3,16 @@ import CustomerClearanceTimeline from "./CustomerClearanceTimeline";
 import { useChatMessageStore } from "@/store/useStore";
 import BotIcon from "/public/img/bot.svg";
 import QuestionChipList from "../QuestionChipList";
-import { useCallback, useState } from "react";
-import { handleTrackingCustomerClearance } from "@/lib/chat/handlers/handleTrackingCustomerClearance";
+import { useCallback } from "react";
 import { QUICK_QUESTION_CHIPS } from "@/constants/texts";
+import { useChatBotSender } from "@/hooks/useChatBotSender";
 
 const ChatLog = () => {
   const messages = useChatMessageStore((state) => state.messages);
-  const addMessages = useChatMessageStore((state) => state.addMessages);
-  const [isWaitingForCargoNumber, setIsWaitingForCargoNumber] = useState(false);
 
+  const { sendMessage } = useChatBotSender();
   const onSend = async (text: string) => {
-    addMessages([{ role: "user", message: text }]);
-
-    /** 추후 api 나오면 수정 필요 */
-    const handlers = [handleTrackingCustomerClearance];
-
-    for (const handler of handlers) {
-      const {
-        handled,
-        messages: botMessages,
-        continueWaiting,
-      } = await handler(text, isWaitingForCargoNumber);
-
-      if (handled) {
-        if (botMessages.length > 0) {
-          addMessages(botMessages);
-        }
-        setIsWaitingForCargoNumber(continueWaiting);
-        return;
-      }
-    }
+    await sendMessage(text);
   };
 
   const handleChipClick = useCallback(
@@ -45,21 +25,6 @@ const ChatLog = () => {
   return (
     <div className="flex flex-col gap-3">
       {messages.map((chat, idx) => {
-        const isTrackingData =
-          chat.role === "bot" &&
-          chat.message.startsWith("통관 진행 조회 결과:") &&
-          chat.message.includes("status");
-
-        let parsedData = null;
-        if (isTrackingData) {
-          try {
-            const raw = chat.message.replace("통관 진행 조회 결과: ", "");
-            parsedData = JSON.parse(raw);
-          } catch (e) {
-            console.log(e);
-          }
-        }
-
         return (
           <div
             key={idx}
@@ -81,11 +46,12 @@ const ChatLog = () => {
                     : "mt-8 self-start bg-gray-200"
                 }`}
               >
-                {isTrackingData && parsedData ? (
+                {
+                  /*isTrackingData && parsedData ? (
                   <CustomerClearanceTimeline data={parsedData} />
-                ) : (
+                ) : (chat.message)}*/
                   chat.message
-                )}
+                }
               </div>
             </div>
             {idx === 0 && chat.role === "bot" && (
