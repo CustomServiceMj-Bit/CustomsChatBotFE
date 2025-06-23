@@ -48,7 +48,7 @@ const ChatLog = () => {
               )}
 
               <div
-                className={`max-w-[290px] rounded-lg px-3 py-2 text-sm ${
+                className={`max-w-[280px] rounded-lg px-3 py-2 text-sm break-keep whitespace-pre-line ${
                   chat.role === "user"
                     ? "self-end bg-blue-100 text-left"
                     : "mt-8 self-start bg-gray-200"
