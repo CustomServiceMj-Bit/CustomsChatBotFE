@@ -8,6 +8,7 @@ import QuestionChipList from "../QuestionChipList";
 import { useCallback, useEffect, useRef } from "react";
 import { QUICK_QUESTION_CHIPS } from "@/constants/texts";
 import { useChatBotSender } from "@/hooks/useChatBotSender";
+import TypingBlock from "./TypingBlock";
 
 const ChatLog = () => {
   const messages = useChatMessageStore((state) => state.messages);
@@ -58,7 +59,7 @@ const ChatLog = () => {
                   /*isTrackingData && parsedData ? (
                   <CustomerClearanceTimeline data={parsedData} />
                 ) : (chat.message)}*/
-                  chat.message
+                  chat.id === "typing" ? <TypingBlock /> : chat.message
                 }
               </div>
             </div>
