@@ -1,9 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import CustomerClearanceTimeline from "./CustomerClearanceTimeline";
 import { useChatMessageStore } from "@/store/useStore";
 import BotIcon from "/public/img/bot.svg";
 import QuestionChipList from "../QuestionChipList";
-import { useCallback } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { QUICK_QUESTION_CHIPS } from "@/constants/texts";
 import { useChatBotSender } from "@/hooks/useChatBotSender";
 
@@ -21,6 +23,12 @@ const ChatLog = () => {
     },
     [onSend],
   );
+
+  const bottomRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
   return (
     <div className="flex flex-col gap-3">
@@ -63,6 +71,7 @@ const ChatLog = () => {
           </div>
         );
       })}
+      <div ref={bottomRef} />
     </div>
   );
 };
