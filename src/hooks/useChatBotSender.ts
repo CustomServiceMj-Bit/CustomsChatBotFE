@@ -1,4 +1,5 @@
 import { postQuestionToBot } from "@/api/postQuestionToBot";
+import { randomAnswer } from "@/lib/utils/utils";
 import { useChatMessageStore } from "@/store/useStore";
 import { ProgressDetailsType } from "@/types/api/types";
 
@@ -30,7 +31,16 @@ export const useChatBotSender = () => {
       if (!reply && progressDetails) {
         //통관 진행 요청 성공
         addMessages([
-          { role: "bot", message: progressDetails, id: "progress" },
+          {
+            role: "bot",
+            message: progressDetails,
+            id: "progress",
+          },
+          {
+            role: "bot",
+            message: randomAnswer(),
+            id: "markdown",
+          },
         ]);
       } else if (!reply && errorReason) {
         //통관 진행 요청 실패
