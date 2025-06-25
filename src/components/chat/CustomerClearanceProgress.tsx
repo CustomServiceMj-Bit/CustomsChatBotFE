@@ -1,6 +1,6 @@
-import { CargoTrackingTimelineProps } from "@/types/components/chat/types";
+import { CustomsClearanceProgressProps } from "@/types/components/chat/types";
 
-const CargoTrackingTimeline = ({ data }: CargoTrackingTimelineProps) => {
+const CustomsClearanceProgress = ({ data }: CustomsClearanceProgressProps) => {
   return (
     <div className="relative ml-1 border-l-2 border-gray-300 p-2">
       {data.map((item, index) => (
@@ -20,4 +20,4 @@ const CargoTrackingTimeline = ({ data }: CargoTrackingTimelineProps) => {
   );
 };
 
-export default CargoTrackingTimeline;
+export default CustomsClearanceProgress;

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import CustomerClearanceTimeline from "./CustomerClearanceTimeline";
+import CustomerClearanceTimeline from "./CustomerClearanceProgress";
 import { useChatMessageStore } from "@/store/useStore";
 import BotIcon from "/public/img/bot.svg";
 import QuestionChipList from "../QuestionChipList";
@@ -9,6 +9,8 @@ import { useCallback, useEffect, useRef } from "react";
 import { QUICK_QUESTION_CHIPS } from "@/constants/texts";
 import { useChatBotSender } from "@/hooks/useChatBotSender";
 import TypingBlock from "./TypingBlock";
+import MarkdownAnswer from "./MarkdownAnswer";
+import { ProgressDetailsType } from "@/types/api/types";
 
 const ChatLog = () => {
   const messages = useChatMessageStore((state) => state.messages);
@@ -55,12 +57,15 @@ const ChatLog = () => {
                     : "mt-8 self-start bg-gray-200"
                 }`}
               >
-                {
-                  /*isTrackingData && parsedData ? (
-                  <CustomerClearanceTimeline data={parsedData} />
-                ) : (chat.message)}*/
-                  chat.id === "typing" ? <TypingBlock /> : chat.message
-                }
+                {chat.id === "typing" ? (
+                  <TypingBlock />
+                ) : chat.id === "progress" ? (
+                  <CustomerClearanceTimeline
+                    data={chat.message as ProgressDetailsType[]}
+                  />
+                ) : (
+                  <MarkdownAnswer answer={chat.message as string} />
+                )}
               </div>
             </div>
             {idx === 0 && chat.role === "bot" && (

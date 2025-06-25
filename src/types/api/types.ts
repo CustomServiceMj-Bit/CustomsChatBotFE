@@ -1,5 +1,12 @@
+export type ProgressDetailsType = {
+  datetime: string;
+  status: string;
+  comment: string;
+};
+
 export interface BotResponse {
-  data: {
-    reply: string;
-  };
+  reply: string | null;
+  success: boolean | null;
+  progressDetails: ProgressDetailsType[];
+  errorReason: string | null;
 }

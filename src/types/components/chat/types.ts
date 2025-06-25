@@ -1,15 +1,11 @@
+import { ProgressDetailsType } from "@/types/api/types";
+
 export interface ChatMessage {
   role: "user" | "bot";
-  message: string;
-  id?: string;
+  message: string | ProgressDetailsType[];
+  id?: "typing" | "progress" | "markdown";
 }
 
-export interface CargoStatus {
-  datetime: string;
-  status: string;
-  comment?: string;
-}
-
-export interface CargoTrackingTimelineProps {
-  data: CargoStatus[];
+export interface CustomsClearanceProgressProps {
+  data: ProgressDetailsType[];
 }
