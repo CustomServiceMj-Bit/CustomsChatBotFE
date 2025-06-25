@@ -1,5 +1,6 @@
 import { postQuestionToBot } from "@/api/postQuestionToBot";
 import { useChatMessageStore } from "@/store/useStore";
+import { ProgressDetailsType } from "@/types/api/types";
 
 export const useChatBotSender = () => {
   const addMessages = useChatMessageStore((s) => s.addMessages);
@@ -20,10 +21,24 @@ export const useChatBotSender = () => {
 
     try {
       const response = await postQuestionToBot(text);
-      const reply = response.data.data.reply;
+      const reply = response.data.reply;
+      const progressDetails = response.data.progressDetails;
+      const errorReason = response.data.errorReason;
 
       removeTyping();
-      addMessages([{ role: "bot", message: reply }]);
+
+      if (!reply && progressDetails) {
+        //통관 진행 요청 성공
+        addMessages([
+          { role: "bot", message: progressDetails, id: "progress" },
+        ]);
+      } else if (!reply && errorReason) {
+        //통관 진행 요청 실패
+        addMessages([{ role: "bot", message: errorReason, id: "markdown" }]);
+      } else if (reply && !progressDetails) {
+        //gpt 답변만 오는 경우
+        addMessages([{ role: "bot", message: reply, id: "markdown" }]);
+      }
     } catch (error) {
       console.error(error);
       addMessages([
