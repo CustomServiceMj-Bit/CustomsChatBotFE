@@ -3,7 +3,7 @@ import remarkGfm from "remark-gfm";
 
 const MarkdownAnswer = ({ answer }: { answer: string }) => {
   return (
-    <div className="w-fit break-keep whitespace-pre-line">
+    <div className="text-sm break-keep whitespace-pre-line">
       <ReactMarkdown remarkPlugins={[remarkGfm]}>{answer}</ReactMarkdown>
     </div>
   );
