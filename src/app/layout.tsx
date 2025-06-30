@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 import localFont from "next/font/local";
+import { Toaster } from "@/components/ui/sonner";
 
 const pretendard = localFont({
   src: "./fonts/PretendardVariable.woff2",
@@ -24,6 +25,7 @@ export default function RootLayout({
       <body className="bg-gray-200">
         <div className="relative mx-auto flex h-screen max-w-[430px] min-w-[375px] flex-col justify-between bg-gray-100 shadow">
           <main>{children}</main>
+          <Toaster />
         </div>
       </body>
     </html>
