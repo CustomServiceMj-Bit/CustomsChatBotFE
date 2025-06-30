@@ -59,7 +59,6 @@ export const useChatBotSender = () => {
         addMessages([{ role: "bot", message: reply, id: "markdown" }]);
       }
     } catch (error) {
-      console.error(error);
       addMessages([
         {
           role: "bot",

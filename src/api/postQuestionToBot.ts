@@ -12,7 +12,6 @@ export const postQuestionToBot = async (
 
     return response.data;
   } catch (error) {
-    console.error("api 요청 실패:", error);
     throw error;
   }
 };
