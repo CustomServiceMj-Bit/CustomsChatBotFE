@@ -1,5 +1,5 @@
 import { postQuestionToBot } from "@/api/postQuestionToBot";
-import { randomAnswer } from "@/lib/utils/utils";
+import { isMaliciousInput, randomAnswer } from "@/lib/utils/utils";
 import { useChatMessageStore } from "@/store/useStore";
 import { useRef } from "react";
 import { toast } from "sonner";
@@ -11,6 +11,11 @@ export const useChatBotSender = () => {
   const isSendingRef = useRef(false);
 
   const sendMessage = async (text: string) => {
+    if (isMaliciousInput(text)) {
+      toast("입력값에 허용되지 않은 코드가 포함되어 있어요.");
+      return;
+    }
+
     if (isSendingRef.current) {
       toast("질문을 처리 중입니다. 잠시만 기다려주세요.");
       return;
