@@ -1,13 +1,22 @@
 import { postQuestionToBot } from "@/api/postQuestionToBot";
 import { randomAnswer } from "@/lib/utils/utils";
 import { useChatMessageStore } from "@/store/useStore";
-import { ProgressDetailsType } from "@/types/api/types";
+import { useRef } from "react";
+import { toast } from "sonner";
 
 export const useChatBotSender = () => {
   const addMessages = useChatMessageStore((s) => s.addMessages);
   const removeTyping = useChatMessageStore((s) => s.removeTyping);
 
+  const isSendingRef = useRef(false);
+
   const sendMessage = async (text: string) => {
+    if (isSendingRef.current) {
+      toast("질문을 처리 중입니다. 잠시만 기다려주세요.");
+      return;
+    }
+    isSendingRef.current = true;
+
     addMessages([{ role: "user", message: text }]);
 
     await new Promise((res) => setTimeout(res, 1000));
@@ -57,6 +66,10 @@ export const useChatBotSender = () => {
           message: "죄송합니다. 서버와의 연결에 실패했습니다.",
         },
       ]);
+    } finally {
+      setTimeout(() => {
+        isSendingRef.current = false;
+      }, 1000);
     }
   };
 
