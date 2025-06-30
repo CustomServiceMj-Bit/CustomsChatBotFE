@@ -8,6 +8,7 @@ import { Input } from "./ui/input";
 import SendIcon from "/public/icon/send.svg";
 import { INPUT_PLACEHOLDER } from "@/constants/texts";
 import { useChatBotSender } from "@/hooks/useChatBotSender";
+import { toast } from "sonner";
 
 const InputContainer = () => {
   const [inputValue, setInputValue] = useState("");
@@ -19,7 +20,10 @@ const InputContainer = () => {
 
   const handleSubmit = () => {
     const trimmedValue = inputValue.trim();
-    if (!trimmedValue) return;
+    if (!trimmedValue) {
+      toast("질문을 입력하신 후 버튼을 클릭해주세요.");
+      return;
+    }
     onSend(trimmedValue);
     setInputValue("");
   };
