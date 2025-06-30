@@ -25,7 +25,7 @@ export default function RootLayout({
       <body className="bg-gray-200">
         <div className="relative mx-auto flex h-screen max-w-[430px] min-w-[375px] flex-col justify-between bg-gray-100 shadow">
           <main>{children}</main>
-          <Toaster />
+          <Toaster position="bottom-center" className="!mb-16" />
         </div>
       </body>
     </html>
