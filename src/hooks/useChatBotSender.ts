@@ -1,4 +1,5 @@
 import { postQuestionToBot } from "@/api/postQuestionToBot";
+import { SERVER_CONNET_ERROR, TOAST_MESSAGES } from "@/constants/texts";
 import { isMaliciousInput, randomAnswer } from "@/lib/utils/utils";
 import { useChatMessageStore } from "@/store/useStore";
 import { useRef } from "react";
@@ -12,12 +13,12 @@ export const useChatBotSender = () => {
 
   const sendMessage = async (text: string) => {
     if (isMaliciousInput(text)) {
-      toast("입력값에 허용되지 않은 코드가 포함되어 있어요.");
+      toast(TOAST_MESSAGES.INVALID_TEXT);
       return;
     }
 
     if (isSendingRef.current) {
-      toast("질문을 처리 중입니다. 잠시만 기다려주세요.");
+      toast(TOAST_MESSAGES.PROCESSING_TEXT);
       return;
     }
     isSendingRef.current = true;
@@ -67,7 +68,7 @@ export const useChatBotSender = () => {
       addMessages([
         {
           role: "bot",
-          message: "죄송합니다. 서버와의 연결에 실패했습니다.",
+          message: SERVER_CONNET_ERROR,
         },
       ]);
     } finally {

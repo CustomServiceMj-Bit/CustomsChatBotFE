@@ -6,7 +6,7 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 
 import SendIcon from "/public/icon/send.svg";
-import { INPUT_PLACEHOLDER } from "@/constants/texts";
+import { INPUT_PLACEHOLDER, TOAST_MESSAGES } from "@/constants/texts";
 import { useChatBotSender } from "@/hooks/useChatBotSender";
 import { toast } from "sonner";
 
@@ -21,7 +21,7 @@ const InputContainer = () => {
   const handleSubmit = () => {
     const trimmedValue = inputValue.trim();
     if (!trimmedValue) {
-      toast("질문을 입력하신 후 버튼을 클릭해주세요.");
+      toast(TOAST_MESSAGES.BLANK_TEXT);
       return;
     }
     onSend(trimmedValue);

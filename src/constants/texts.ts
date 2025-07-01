@@ -1,6 +1,8 @@
 export const INIT_BOT_MESSAGE =
   "안녕하세요! 통관 지식 알림이 관식이입니다. 버튼을 선택하거나, 대화창에 질문해주세요.";
 
+export const HEADER_TEXT = "통관 챗봇 관식이";
+
 export const QUICK_QUESTION_CHIPS = [
   "관세를 예측해줘",
   "통관 진행을 조회해줘",
@@ -25,3 +27,11 @@ export const ADDITIONAL_ANSWERS = [
   "다른 질문 있으시면 계속 이어서 물어보셔도 괜찮아요 🔄",
   "필요한 정보가 더 있으면 알려주시면 바로 도와드릴게요 🚀",
 ];
+
+export const TOAST_MESSAGES = {
+  BLANK_TEXT: "질문을 입력하신 후에 버튼을 클릭해주세요.",
+  INVALID_TEXT: "입력값에 허용되지 않은 코드가 포함되어 있어요.",
+  PROCESSING_TEXT: "질문을 처리 중입니다. 잠시만 기다려주세요.",
+};
+
+export const SERVER_CONNET_ERROR = "죄송합니다. 서버와의 연결에 실패했습니다.";
