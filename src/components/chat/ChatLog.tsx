@@ -49,7 +49,6 @@ const ChatLog = () => {
                   <Image src={BotIcon} alt="bot-icon" />
                 </div>
               )}
-
               <div
                 className={`max-w-[280px] rounded-lg px-3 py-2 ${
                   chat.role === "user"
