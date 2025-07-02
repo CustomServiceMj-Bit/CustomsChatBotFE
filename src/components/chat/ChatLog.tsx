@@ -50,10 +50,8 @@ const ChatLog = () => {
                 </div>
               )}
               <div
-                className={`max-w-[280px] rounded-lg px-3 py-2 ${
-                  chat.role === "user"
-                    ? "self-end bg-blue-100 text-left"
-                    : "mt-8 self-start bg-gray-200"
+                className={`max-w-[270px] rounded-lg px-3 py-2 ${
+                  chat.role === "user" ? "bg-blue-100" : "mt-6 bg-gray-200"
                 }`}
               >
                 {chat.id === "typing" ? (

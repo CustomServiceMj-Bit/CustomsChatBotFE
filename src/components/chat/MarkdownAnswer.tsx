@@ -4,7 +4,7 @@ import rehypeSanitize from "rehype-sanitize";
 
 const MarkdownAnswer = ({ answer }: { answer: string }) => {
   return (
-    <div className="text-sm break-keep whitespace-pre-line">
+    <div className="text-left text-sm">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeSanitize]}
