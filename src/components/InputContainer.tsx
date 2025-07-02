@@ -3,12 +3,13 @@
 import { useState } from "react";
 import Icon from "./Icon";
 import { Button } from "./ui/button";
-import { Input } from "./ui/input";
 
 import SendIcon from "/public/icon/send.svg";
-import { INPUT_PLACEHOLDER, TOAST_MESSAGES } from "@/constants/texts";
+import { TOAST_MESSAGES } from "@/constants/texts";
 import { useChatBotSender } from "@/hooks/useChatBotSender";
 import { toast } from "sonner";
+
+import AutoResizeTextarea from "./AutoResizeTextarea";
 
 const InputContainer = () => {
   const [inputValue, setInputValue] = useState("");
@@ -29,22 +30,20 @@ const InputContainer = () => {
   };
 
   return (
-    <div className="flex h-18 flex-col gap-4 bg-white p-4">
-      <div className="grid grid-cols-6 gap-2">
-        <Input
-          className="col-span-5 h-10"
-          placeholder={INPUT_PLACEHOLDER}
+    <div className="flex h-auto flex-col gap-4 bg-white p-4">
+      <div className="grid grid-cols-[1fr_auto] items-center gap-2">
+        <AutoResizeTextarea
+          value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           onKeyUp={(e) => {
             if (e.key === "Enter" && !e.nativeEvent.isComposing) {
               handleSubmit();
             }
           }}
-          value={inputValue}
         />
         <Button
           variant="ghost"
-          className="border-input col-span-1 h-10 border shadow-xs"
+          className="border-input col-span-1 h-full border shadow-xs"
           onClick={handleSubmit}
         >
           <Icon src={SendIcon} alt="send-icon" size="lg" />

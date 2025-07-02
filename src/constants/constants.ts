@@ -6,3 +6,5 @@ export const ICON_SIZE_MAP: Record<IconSize, number> = {
   md: 20,
   lg: 24,
 };
+
+export const INPUT_MAX_LENGTH = 1000;
