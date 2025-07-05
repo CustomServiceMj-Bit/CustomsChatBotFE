@@ -37,6 +37,9 @@ const InputContainer = () => {
           onChange={(e) => setInputValue(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === "Enter" && !e.nativeEvent.isComposing) {
+              if (e.shiftKey) {
+                return;
+              }
               e.preventDefault();
               handleSubmit();
             }
