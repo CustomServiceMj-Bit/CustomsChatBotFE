@@ -35,8 +35,9 @@ const InputContainer = () => {
         <AutoResizeTextarea
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
-          onKeyUp={(e) => {
+          onKeyDown={(e) => {
             if (e.key === "Enter" && !e.nativeEvent.isComposing) {
+              e.preventDefault();
               handleSubmit();
             }
           }}

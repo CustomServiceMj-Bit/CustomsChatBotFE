@@ -9,7 +9,7 @@ import { INPUT_PLACEHOLDER } from "@/constants/texts";
 const AutoResizeTextarea = ({
   value,
   onChange,
-  onKeyUp,
+  onKeyDown,
 }: AutoResizeTextareaProps) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -23,7 +23,7 @@ const AutoResizeTextarea = ({
       ref={textareaRef}
       value={value}
       onChange={onChange}
-      onKeyUp={onKeyUp}
+      onKeyDown={onKeyDown}
       placeholder={INPUT_PLACEHOLDER}
       maxLength={INPUT_MAX_LENGTH}
       className="overflow-y-aut max-h-16 min-h-10 resize-none text-sm"
