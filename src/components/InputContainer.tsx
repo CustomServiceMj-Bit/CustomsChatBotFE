@@ -56,7 +56,12 @@ const InputContainer = () => {
           className="border-input col-span-1 h-full border shadow-xs"
           onClick={handleSubmit}
         >
-          <Icon src={SendIcon} alt="send-icon" size="lg" />
+          <Icon
+            src={SendIcon}
+            alt="send-icon"
+            size="lg"
+            className="min-h-[20px] min-w-[20px]"
+          />
         </Button>
       </div>
     </div>
