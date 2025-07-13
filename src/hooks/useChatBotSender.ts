@@ -38,8 +38,8 @@ export const useChatBotSender = () => {
     try {
       const response = await postQuestionToBot(text);
       const reply = response.data.reply;
-      const progressDetails = response.data.progressDetails;
-      const errorReason = response.data.errorReason;
+      const progressDetails = response.data.progress_details;
+      const errorReason = response.data.error_reason;
 
       removeTyping();
 

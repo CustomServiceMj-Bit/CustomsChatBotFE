@@ -7,6 +7,6 @@ export type ProgressDetailsType = {
 export interface BotResponse {
   reply: string | null;
   success: boolean | null;
-  progressDetails: ProgressDetailsType[];
-  errorReason: string | null;
+  progress_details: ProgressDetailsType[];
+  error_reason: string | null;
 }
