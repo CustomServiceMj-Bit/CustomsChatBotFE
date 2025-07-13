@@ -10,6 +10,7 @@ import { useChatBotSender } from "@/hooks/useChatBotSender";
 import { toast } from "sonner";
 
 import AutoResizeTextarea from "./AutoResizeTextarea";
+import FontSizeDrawer from "./FontSizeDrawer";
 
 const InputContainer = () => {
   const [inputValue, setInputValue] = useState("");
@@ -31,20 +32,25 @@ const InputContainer = () => {
 
   return (
     <div className="flex h-auto flex-col gap-4 bg-white p-4">
-      <div className="grid grid-cols-[1fr_auto] items-center gap-2">
-        <AutoResizeTextarea
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" && !e.nativeEvent.isComposing) {
-              if (e.shiftKey) {
-                return;
+      <div className="grid grid-cols-7 items-center gap-2">
+        <div className="col-span-1">
+          <FontSizeDrawer />
+        </div>
+        <div className="col-span-5">
+          <AutoResizeTextarea
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && !e.nativeEvent.isComposing) {
+                if (e.shiftKey) {
+                  return;
+                }
+                e.preventDefault();
+                handleSubmit();
               }
-              e.preventDefault();
-              handleSubmit();
-            }
-          }}
-        />
+            }}
+          />
+        </div>
         <Button
           variant="ghost"
           className="border-input col-span-1 h-full border shadow-xs"
