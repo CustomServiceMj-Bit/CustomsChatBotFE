@@ -2,7 +2,7 @@ import ChatLog from "./ChatLog";
 
 const ChatContainer = () => {
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <ChatLog />
     </div>
   );
