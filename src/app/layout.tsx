@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="ko" className={pretendard.className}>
       <body className="bg-gray-200">
-        <div className="relative mx-auto flex h-screen max-w-[430px] min-w-[375px] flex-col justify-between bg-gray-100 shadow">
+        <div className="relative mx-auto flex h-screen max-w-[430px] min-w-[330px] flex-col justify-between bg-gray-100 shadow">
           <main>{children}</main>
           <Toaster position="bottom-center" className="!mb-16" />
         </div>
