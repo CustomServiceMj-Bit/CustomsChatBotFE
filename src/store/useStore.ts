@@ -26,3 +26,17 @@ export const useChatMessageStore = create<ChatMessageStore>((set) => ({
       messages: state.messages.filter((message) => message.id !== "typing"),
     })),
 }));
+
+/** 글자 크기 */
+
+type FontSize = "sm" | "xl";
+
+interface FontSizeState {
+  fontSize: FontSize;
+  setFontSize: (size: FontSize) => void;
+}
+
+export const useFontSizeStore = create<FontSizeState>((set) => ({
+  fontSize: "sm",
+  setFontSize: (size) => set({ fontSize: size }),
+}));
