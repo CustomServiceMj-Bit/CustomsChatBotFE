@@ -35,3 +35,10 @@ export const TOAST_MESSAGES = {
 };
 
 export const SERVER_CONNET_ERROR = "죄송합니다. 서버와의 연결에 실패했습니다.";
+
+export const FONT_SIZE_BUTTON = "글자 크기 설정";
+
+export const FONT_SIZE_DESCRIPTION =
+  "버튼을 눌러 채팅 글자 크기를 변경하실 수 있습니다.";
+
+export const FONT_SIZE_BUTTON_TEXT = "가";
