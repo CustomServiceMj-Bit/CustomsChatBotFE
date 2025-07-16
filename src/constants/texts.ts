@@ -6,7 +6,8 @@ export const HEADER_TEXT = "통관 챗봇 관식이";
 export const QUICK_QUESTION_CHIPS = [
   "관세를 예측해줘",
   "통관 진행을 조회해줘",
-  "위험 품목인지 알려줘",
+  "간이 통관이란?",
+  "곤약 젤리 반입해와도 돼?",
 ];
 
 export const REFRESH_BUTTON = "새로고침";
