@@ -15,6 +15,7 @@ const AutoResizeTextarea = ({
 
   useEffect(() => {
     if (!textareaRef.current) return;
+    textareaRef.current.style.height = "auto";
     textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
   }, [value]);
 
