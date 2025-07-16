@@ -43,7 +43,7 @@ export const useChatBotSender = () => {
 
       removeTyping();
 
-      if (!reply && progressDetails) {
+      if (progressDetails) {
         //통관 진행 요청 성공
         addMessages([
           {
