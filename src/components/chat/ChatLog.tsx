@@ -46,7 +46,11 @@ const ChatLog = () => {
             <div className="flex items-start">
               {chat.role === "bot" && (
                 <div className="mr-2 h-10 w-10 overflow-hidden">
-                  <Image src={BotIcon} alt="bot-icon" />
+                  <Image
+                    src={BotIcon}
+                    alt="bot-icon"
+                    className="min-h-11 min-w-8"
+                  />
                 </div>
               )}
               <div
