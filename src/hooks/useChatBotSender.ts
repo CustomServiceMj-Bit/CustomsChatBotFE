@@ -65,6 +65,7 @@ export const useChatBotSender = () => {
         addMessages([{ role: "bot", message: reply, id: "markdown" }]);
       }
     } catch (error) {
+      removeTyping();
       addMessages([
         {
           role: "bot",
