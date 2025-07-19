@@ -11,7 +11,7 @@ const pretendard = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "통관 챗봇 관식이",
+  title: "올인원 에이전트 관식이",
   description: "통관 지식을 알려주는 국세청 챗봇입니다.",
 };
 
