@@ -2,11 +2,15 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
+  "resolutions": {
+    "form-data": "^4.0.4"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "preinstall": "npx npm-force-resolutions"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.14",
@@ -43,6 +47,7 @@
     "eslint-config-next": "^15.3.2",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-prettier": "^5.4.0",
+    "npm-force-resolutions": "^0.0.10",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "tw-animate-css": "^1.2.9",
