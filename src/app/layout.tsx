@@ -12,7 +12,18 @@ const pretendard = localFont({
 
 export const metadata: Metadata = {
   title: "올인원 에이전트 관식이",
-  description: "관세 관련 지식을 알려주는 국세청 챗봇입니다.",
+  description: "관세 지식을 알려주는 관세청 챗봇",
+  openGraph: {
+    url: "https://customschatbot.site/",
+    images: [
+      {
+        url: "https://imgur.com/2k17iE3.png",
+        width: 1200,
+        height: 630,
+        alt: "Thumbnail",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
