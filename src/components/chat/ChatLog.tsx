@@ -3,7 +3,7 @@
 import Image from "next/image";
 import CustomerClearanceTimeline from "./CustomerClearanceProgress";
 import { useChatMessageStore } from "@/store/useStore";
-import BotIcon from "/public/img/bot.svg";
+import BotIcon from "/public/img/bot.png";
 import QuestionChipList from "../QuestionChipList";
 import { useCallback, useEffect, useRef } from "react";
 import { QUICK_QUESTION_CHIPS } from "@/constants/texts";
